@@ -1,0 +1,122 @@
+<h4 class="companyH4">Company details</h4>
+<hr class="companyHr"/>
+
+<div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="company.name" class="form-control" id="companyName" name="companyName" ng-maxlength="100" placeholder="Company name Here" required/>
+    <span class="help-block"
+     ng-show="companyForm.companyName.$error.required && companyForm.companyName.$dirty">
+     Company's name is required
+    </span>
+    <span class="help-block"
+     ng-show="companyForm.companyName.$error.maxlength">
+     Company's name is too long
+    </span>
+  </div>
+</div>
+
+<h4 class="companyH4">Address</h4>
+<hr class="companyHr"/>
+
+<div class="form-group">
+  <label for="lane" class="col-sm-2 control-label">Lane</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="company.address.lane" class="form-control" id="lane" name="companyLane" ng-maxlength="50" placeholder="Company lane Here" required/>
+    <span class="help-block"
+     ng-show="companyForm.companyLane.$error.required && companyForm.companyLane.$dirty">
+     Company's lane is required
+    </span>
+    <span class="help-block"
+     ng-show="companyForm.companyLane.$error.maxlength">
+     Lane is too long
+    </span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="city" class="col-sm-2 control-label">City</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="company.address.city" class="form-control" id="city" name="companyCity" ng-maxlength="50" placeholder="Company city Here" required/>
+    <span class="help-block"
+     ng-show="companyForm.companyCity.$error.required && companyForm.companyCity.$dirty">
+     Company's city is required
+    </span>
+    <span class="help-block"
+     ng-show="companyForm.companyCity.$error.maxlength">
+     City is too long
+    </span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="country" class="col-sm-2 control-label">Country</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="company.address.country" class="form-control" id="country" name="companyCountry" ng-maxlength="20" placeholder="Company country Here" required/>
+    <span class="help-block"
+     ng-show="companyForm.companyCountry.$error.required && companyForm.companyCountry.$dirty">
+     Company's country is required
+    </span>
+    <span class="help-block"
+     ng-show="companyForm.companyCountry.$error.maxlength">
+     Country is too long
+    </span>
+  </div>
+</div>
+
+	<h4 class="companyH4">Contact</h4>
+	<hr class="companyHr"/>
+<div class="form-group">
+  <label for="phone" class="col-sm-2 control-label">Phone</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="company.contact.phone" class="form-control" id="phone" name="companyPhone" ng-maxlength="15" placeholder="Company phone Here" />
+    <span class="help-block"
+     ng-show="companyForm.companyPhone.$error.maxlength">
+     Phone is too long
+    </span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="email" class="col-sm-2 control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" ng-model="company.contact.email" class="form-control" id="email" name="companyEmail" ng-maxlength="50" placeholder="Company email Here" />
+    <span class="help-block" ng-show="companyForm.companyEmail.$error.email">
+        Not valid email!</span>
+    <span class="help-block"
+     ng-show="companyForm.companyEmail.$error.maxlength">
+     Email is too long
+    </span>
+  </div>
+</div>
+
+<div ng-controller="CompanyBeneficiaryController">
+	<h4 class="companyH4">Beneficiary</h4>
+	<hr class="companyHr"/>
+   <div class="form-group">
+     <fieldset ng-repeat="beneficiary in company.beneficiaries.beneficiaryList track by $index">
+     	<label for="beneficiaryName" class="col-sm-2 control-label">Name</label>
+     	<div class="input-group">
+	         <input type="text" class="form-control" ng-model="company.beneficiaries.beneficiaryList[$index].name" ng-maxlength="50" name="beneficiaryList[$index]" placeholder="Company beneficiary Here" required/>
+	         <span class="help-block"
+     				ng-show="companyForm.beneficiaryList[$index].$error.required && companyForm.beneficiaryList[$index].$dirty">
+     				Company's beneficiary is required if added else delete it.
+    		</span>
+    		<span class="help-block"
+     				ng-show="companyForm.companyEmail.$error.maxlength">
+     			Beneficiary Name is too long
+    		</span>
+	         <span class="input-group-btn">
+		         <input type="button" ng-click="addRow($index)" class="btn btn-info" value="Add" ng-show="$last"/>
+		         <input type="button" ng-click="deleteRow($event,$index)" class="btn btn-warning" value="Delete" ng-show="$index != 0"/>
+	         </span>
+        </div>
+     </fieldset>
+     <span>{{data|json}}</span>
+  </div>
+</div>
+
+<div class="col-md-6 col-md-offset-2">
+  <button type="submit" class="btn btn-primary btn-md col-md-5" ng-disabled="companyForm.$invalid">Save</button>
+  <button type="reset" class="btn btn-warning btn-md col-md-5">Reset</button>
+</div>

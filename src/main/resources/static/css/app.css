@@ -1,0 +1,25 @@
+.top-buffer{
+    margin-top:10px;
+}
+
+.companytable tr td:nth-child(2){
+    width: 150px;
+}
+
+.companytable tr:nth-child(1) td{
+    border-top: none;
+}
+a.nodecoration{
+    text-decoration:none;
+}
+.companyH4 {
+	color: gray;
+}
+
+.companyHr {
+	margin-top: 0px;
+}
+
+.help-block {
+	color: red;
+}

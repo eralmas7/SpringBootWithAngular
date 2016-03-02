@@ -1,0 +1,23 @@
+angular.module('companyApp',['ui.router','ngResource','companyApp.controllers','companyApp.services']);
+
+angular.module('companyApp').config(function($stateProvider,$httpProvider){
+    $stateProvider.state('companies',{
+        url:'/companies',
+        templateUrl:'partials/companies.html',
+        controller:'CompanyListController'
+    }).state('viewCompany',{
+       url:'/companies/:id/view',
+       templateUrl:'partials/company-view.html',
+       controller:'CompanyViewController'
+    }).state('newCompany',{
+        url:'/companies/new',
+        templateUrl:'partials/company-add.html',
+        controller:'CompanyCreateController'
+    }).state('editCompany',{
+        url:'/companies/:id/edit',
+        templateUrl:'partials/company-edit.html',
+        controller:'CompanyEditController'
+    });
+}).run(function($state){
+   $state.go('companies');
+});
