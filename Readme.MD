@@ -36,7 +36,7 @@ Instructions to build and run the application.
 
 ##### How can i extend service to support security:
 
-	1. Add the following dependancy in pom.xml (under dependancies tag) which is at the root of the Git project.
+	1. Add the following dependency in pom.xml (under dependancies tag) which is at the root of the Git project.
            <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
